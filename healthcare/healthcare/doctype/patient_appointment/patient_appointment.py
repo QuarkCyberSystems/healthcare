@@ -347,7 +347,7 @@ class PatientAppointment(Document):
 				event_doc.starts_on = starts_on
 				event_doc.ends_on = ends_on
 				event_doc.add_video_conferencing = self.add_video_conferencing
-				event_doc.save(ignore_permission=True)
+				event_doc.save(ignore_permissions=True)
 				event_doc.reload()
 				self.google_meet_link = event_doc.google_meet_link
 
@@ -880,4 +880,4 @@ def update_appointment_status():
 	for appointment in appointments:
 		appointment_doc = frappe.get_doc("Patient Appointment", appointment.name)
 		appointment_doc.set_status()
-		appointment_doc.save(ignore_permission=True)
+		appointment_doc.save(ignore_permissions=True)
