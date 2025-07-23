@@ -18,16 +18,17 @@ class PatientEncounter(Document):
 		validate_codification_table(self)
 
 	def on_update(self):
-		if self.appointment:
-			frappe.db.set_value("Patient Appointment", self.appointment, "status", "Closed")
+		pass
+		#if self.appointment:
+		#	frappe.db.set_value("Patient Appointment", self.appointment, "status", "Closed")
 
 	def on_submit(self):
 		if self.therapies:
 			create_therapy_plan(self)
 
 	def on_cancel(self):
-		if self.appointment:
-			frappe.db.set_value("Patient Appointment", self.appointment, "status", "Open")
+		#if self.appointment:
+		#	frappe.db.set_value("Patient Appointment", self.appointment, "status", "Open")
 
 		if self.inpatient_record and self.drug_prescription:
 			delete_ip_medication_order(self)

@@ -393,7 +393,8 @@ let create_vital_signs = function(frm) {
 	frappe.route_options = {
 		'patient': frm.doc.patient,
 		'encounter': frm.doc.name,
-		'company': frm.doc.company
+		'company': frm.doc.company,
+		'appointment': frm.doc.appointment
 	};
 	frappe.new_doc('Vital Signs');
 };
@@ -405,7 +406,8 @@ let create_procedure = function(frm) {
 	frappe.route_options = {
 		'patient': frm.doc.patient,
 		'medical_department': frm.doc.medical_department,
-		'company': frm.doc.company
+		'company': frm.doc.company,
+		'appointment': frm.doc.appointment
 	};
 	frappe.new_doc('Clinical Procedure');
 };

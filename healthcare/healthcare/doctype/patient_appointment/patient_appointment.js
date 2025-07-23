@@ -78,31 +78,37 @@ frappe.ui.form.on('Patient Appointment', {
 				check_and_set_availability(frm);
 			});
 
-			if (frm.doc.procedure_template) {
-				frm.add_custom_button(__('Clinical Procedure'), function() {
-					frappe.model.open_mapped_doc({
-						method: 'healthcare.healthcare.doctype.clinical_procedure.clinical_procedure.make_procedure',
-						frm: frm,
-					});
-				}, __('Create'));
-			} else if (frm.doc.therapy_type) {
-				frm.add_custom_button(__('Therapy Session'), function() {
-					frappe.model.open_mapped_doc({
-						method: 'healthcare.healthcare.doctype.therapy_session.therapy_session.create_therapy_session',
-						frm: frm,
-					})
-				}, 'Create');
-			} else {
-				frm.add_custom_button(__('Patient Encounter'), function() {
-					frappe.model.open_mapped_doc({
-						method: 'healthcare.healthcare.doctype.patient_appointment.patient_appointment.make_encounter',
-						frm: frm,
-					});
-				}, __('Create'));
-			}
+			//if (frm.doc.procedure_template) {
+			//	frm.add_custom_button(__('Clinical Procedure'), function() {
+			//		frappe.model.open_mapped_doc({
+			//			method: 'healthcare.healthcare.doctype.clinical_procedure.clinical_procedure.make_procedure',
+			//			frm: frm,
+			//		});
+			//	}, __('Create'));
+			//} else if (frm.doc.therapy_type) {
+			//	frm.add_custom_button(__('Therapy Session'), function() {
+			//		frappe.model.open_mapped_doc({
+			//			method: 'healthcare.healthcare.doctype.therapy_session.therapy_session.create_therapy_session',
+			//			frm: frm,
+			//		})
+			//	}, 'Create');
+			//} else {
+			//	frm.add_custom_button(__('Patient Encounter'), function() {
+			//		frappe.model.open_mapped_doc({
+			//			method: 'healthcare.healthcare.doctype.patient_appointment.patient_appointment.make_encounter',
+			//			frm: frm,
+			//		});
+			//	}, __('Create'));
+			//}
 
-			frm.add_custom_button(__('Vital Signs'), function() {
-				create_vital_signs(frm);
+			//frm.add_custom_button(__('Vital Signs'), function() {
+			//	create_vital_signs(frm);
+			//}, __('Create'));
+			frm.add_custom_button(__('Patient Encounter'), function() {
+				frappe.model.open_mapped_doc({
+					method: 'healthcare.healthcare.doctype.patient_appointment.patient_appointment.make_encounter',
+					frm: frm,
+				});
 			}, __('Create'));
 		}
 
